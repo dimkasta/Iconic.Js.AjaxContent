@@ -12,15 +12,16 @@ var RemoteContentService = function (url, selector, fallbackContent, errorSelect
 
     return {
         init: function() {
-            $.get(url, function (data) {
-                $(selector).html(data);
-                callback();
-            }).error(function(){
-                var error = $('<div/>').addClass('alert alert-danger').html(errorMessage);
-                $(errorSelector).append(error);
-                $(selector).html(fallbackContent);
+            $(function(){
+                $.get(url, function (data) {
+                    $(selector).html(data);
+                    callback();
+                }).error(function(){
+                    var error = $('<div/>').addClass('alert alert-danger').html(errorMessage);
+                    $(errorSelector).append(error);
+                    $(selector).html(fallbackContent);
+                });
             });
-
         }
     };
 };
