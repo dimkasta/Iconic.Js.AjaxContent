@@ -40,7 +40,7 @@ Messages
         $("<div/>").addClass("alert alert-success").html("1 ok").appendTo("#messages");
     };
 
-    var remote1 = RemoteContentService('test1.html_', '#dynamicDiv1', '0', '#messages', 'Cannot load test1', callback1);
+    var remote1 = RemoteContentService('test1.html', '#dynamicDiv1', '0', '#messages', 'Cannot load test1', callback1);
     remote1.init();
 
     var callback2 = function(){
