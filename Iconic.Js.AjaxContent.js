@@ -15,8 +15,10 @@ var RemoteContentService = function (url, selector, fallbackContent, errorSelect
             $(function(){
                 $.get(url, function (data) {
                     $(selector).html(data);
-                    callback();
-                }).error(function(){
+                    if(callback !== null) {
+                        callback();
+                    }
+                }).fail(function(){
                     var error = $('<div/>').addClass('alert alert-danger').html(errorMessage);
                     $(errorSelector).append(error);
                     $(selector).html(fallbackContent);
